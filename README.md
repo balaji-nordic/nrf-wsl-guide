@@ -1,4 +1,4 @@
-# nrf-wsl-guide
+# Working with nRF DKs from WSL2 
 
 This guide aims to help you (and the future me) get (re)started with working with nRF DKs from WSL2 🐧.
 
