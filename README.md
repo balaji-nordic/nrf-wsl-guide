@@ -1,6 +1,6 @@
 # nrf-wsl-guide
 
-This guide aims to help you get started with working with nRF DKs from WSL2.
+This guide aims to help you (and the future me) get (re)started with working with nRF DKs from WSL2 🐧.
 
 ## Step 1: Attaching the DK to WSL2: 
 - On Windwows, open up PowerShell and enter the following command
@@ -27,7 +27,7 @@ while (1)
   usbipd wsl attach --busid 1-11
 }
 ```
-This bruteforces the attach thereby ensuring that your DK is always attached to WSL.
+This bruteforces the attach thereby ensuring that your DK is always attached to WSL .
 
 :point_right: *Tip 2:* When attaching the device, if you get a warning about your firewall blocking the connection, do the following from PowerShell (in administrator mode).
 
