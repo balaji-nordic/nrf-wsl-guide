@@ -19,7 +19,7 @@ BUSID  VID:PID    DEVICE                                                        
   `usbipd wsl attach --busid={BUS-ID}`
 
 
-:point_right: *Tip 1:* It is observed that on some machines, windows automatically disconnects the device ramdomly. To avoid that, you may use the following while loop on PowerShell
+:point_right: *Tip 1:* It is observed that on some machines, windows automatically disconnects the device ramdomly 🤷‍♀️. To workaround that, you may use the following while loop on PowerShell (and leave it running)
 
 ```
 while (1)
