@@ -19,15 +19,18 @@ BUSID  VID:PID    DEVICE                                                        
   `usbipd wsl attach --busid={BUS-ID}`
 
 
-:point_right: *Tip 1:* It is observed that on some machines, windows automatically disconnects the device ramdomly 🤷‍♀️. To workaround that, you may use the following while loop on PowerShell (and leave it running)
+:point_right: *Tip 1:* It is observed that on some machines, windows automatically disconnects the device ramdomly 🤷‍♀️. To workaround that, you may use one of the following methods.
+  - Create a while loop on PowerShell (and leave it running)
 
-```
-while (1)
-{
-  usbipd wsl attach --busid 1-11
-}
-```
-This bruteforces the attach thereby ensuring that your DK is always attached to WSL .
+  ```
+  while (1)
+  {
+    usbipd wsl attach --busid 1-11
+  }
+  ```
+  This bruteforces the attach thereby ensuring that your DK is always attached to WSL.
+  - Use the `--auto-attach ` option. 👉 Note that this is only known to work on a single device. See https://github.com/dorssel/usbipd-win/issues/619
+
 
 :point_right: *Tip 2:* When attaching the device, if you get a warning about your firewall blocking the connection, do the following from PowerShell (in administrator mode).
 
