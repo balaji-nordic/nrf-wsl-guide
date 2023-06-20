@@ -3,7 +3,7 @@
 This guide aims to help you (and the future me) get (re)started with working with nRF DKs from WSL2 🐧.
 
 ## Step 1: Attaching the DK to WSL2: 
-- On Windwows, open up PowerShell and enter the following command
+- On Windwows, open up PowerShell with _Administrator privileges_ and enter the following command
 
   `usbipd wsl list`
 - This will give you the BUS IDs of the DKs and other USB devices attached to your PC. Note the DK's BUS ID. It shows up something like this
@@ -55,15 +55,22 @@ SUBSYSTEM=="tty", ATTRS{idVendor}=="0d28", MODE="0666", GROUP="dialout"
 ```
 - In WSL, ensure that that the `systemd-udevd` service is running. You can verify that by doing
 
-  `sudo service udev status`
+  ```
+  sudo service udev status
+  ```
 - If the service is not running, you can start it by doing
 
-  `sudo service udev start` 
+  ```
+  sudo service udev start
+  ```
+  
 - If the service was running, but you made changes to the `99-jlink.rules` file as mentioned above, then you will need to restart the `system-udev` by doing the following
 
-  `sudo service udev restart`
+  ```
+  sudo service udev restart
+  ```
   
-👉 In some cases, you will also need to do `sudo udevadm control --reload` after restarting `system-udev`
+👉 In some cases, you will also need to do  `sudo udevadm control --reload` after restarting `system-udev`.
 
 This will enable you to fully take control of both programming and accessing the com ports of your DK. You can use the linux flavor of nRF Command Line tools to program from WSL and also use zephyr's `twister` to run on-target tests. 
 Terminal applications like `minicom` will also be able to listen to the com ports exposed by the DK.
