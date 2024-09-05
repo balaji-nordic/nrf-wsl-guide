@@ -3,9 +3,9 @@
 This guide aims to help you (and the future me) get (re)started with working with nRF DKs from WSL2 🐧.
 
 ## Step 1: Attaching the DK to WSL2: 
-- On Windwows, open up PowerShell with _Administrator privileges_ and enter the following command
+- On Windows, open up PowerShell with _Administrator privileges_ and enter the following command
 
-  `usbipd wsl list`
+  `usbipd list`
 - This will give you the BUS IDs of the DKs and other USB devices attached to your PC. Note the DK's BUS ID. It shows up something like this
 
 ``` 
@@ -16,16 +16,16 @@ BUSID  VID:PID    DEVICE                                                        
 - The BUS ID for the DK listed above is `2-2`. 
 - Attach it to WSL using the following command
   
-  `usbipd wsl attach --busid={BUS-ID}`
+  `usbipd attach --wsl --busid={BUS-ID}`
 
 
-:point_right: *Tip 1:* It is observed that on some machines, windows automatically disconnects the device ramdomly 🤷‍♀️. To workaround that, you may use one of the following methods.
+:point_right: *Tip 1:* It is observed that on some machines, windows automatically disconnects the device randomly 🤷‍♀️. To workaround that, you may use one of the following methods.
   - Create a while loop on PowerShell (and leave it running)
 
   ```
   while (1)
   {
-    usbipd wsl attach --busid 1-11
+    usbipd attach --wsl --busid 1-11
   }
   ```
   This bruteforces the attach thereby ensuring that your DK is always attached to WSL.
@@ -36,6 +36,10 @@ BUSID  VID:PID    DEVICE                                                        
 
 ```
 Set-NetFirewallProfile -DisabledInterfaceAliases "vEthernet (WSL)"
+```
+Or
+```
+Set-NetFirewallProfile -DisabledInterfaceAliases "vEthernet (WSL (Hyper-V firewall))"
 ```
 
 This brute-forces the attach thereby ensuring that your DK is always attached to WSL.
@@ -95,6 +99,11 @@ nrfjprog.exe $
 Everytime you invoke `nrfjprog` from WSL, the windows version gets invoked and works just fine. Even commands using meta tools like `west flash` would work using this method.
 
 Have fun 🥳
+ 
+# Attaching device in VSCode.
+
+Attaching a device can also be done with the extension [USBIP Connect](https://marketplace.visualstudio.com/items?itemName=thecreativedodo.usbip-connect).
+This extension will add the buttons "Attach" and "Detach" to the bar at the bottom of the page.
 
 # Debugging from a WSL instance of VS COde (using nRFConnect for VS Code Extension)
 
