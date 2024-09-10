@@ -93,7 +93,7 @@ In WSL,
 ```
 #!/bin/bash
 
-nrfjprog.exe $
+nrfjprog.exe $*
 ```
 - Add `/user/local/bin` to your PATH
 
