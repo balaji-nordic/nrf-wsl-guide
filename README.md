@@ -90,10 +90,11 @@ then you can do the following trick.
 In WSL, 
 - Create `/usr/local/bin/nrfjprog`
 - Add the following lines in that file
-``
+```
 #!/bin/bash
+
 nrfjprog.exe $
-``
+```
 - Add `/user/local/bin` to your PATH
 
 Everytime you invoke `nrfjprog` from WSL, the windows version gets invoked and works just fine. Even commands using meta tools like `west flash` would work using this method.
